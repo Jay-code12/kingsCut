@@ -1,0 +1,17 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E2018"/>
+      <stop offset="100%" stop-color="#1B1410"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg3)"/>
+  <circle cx="150" cy="150" r="140" fill="#C89B3C" opacity="0.07"/>
+  <g transform="translate(400,240)">
+    <path d="M-60,10 L-45,-40 L-25,-5 L0,-55 L25,-5 L45,-40 L60,10 L55,10 L55,45 L-55,45 L-60,10 Z"
+          fill="#C89B3C"/>
+  </g>
+  <text x="400" y="420" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#F3E8D6">The Full King</text>
+  <text x="400" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" letter-spacing="2" fill="#C89B3C">GROOMING PACKAGE</text>
+  <text x="400" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="3" fill="#7A6650">KING'S CUT SALOON</text>
+</svg>

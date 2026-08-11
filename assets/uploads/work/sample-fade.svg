@@ -1,0 +1,18 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E2018"/>
+      <stop offset="100%" stop-color="#1B1410"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg1)"/>
+  <circle cx="650" cy="90" r="130" fill="#C89B3C" opacity="0.08"/>
+  <circle cx="90" cy="520" r="160" fill="#7A2530" opacity="0.10"/>
+  <g transform="translate(400,255)">
+    <path d="M-70,20 L-40,-60 L-10,10 L20,-70 L50,10 L80,-60 L110,20 L100,20 L100,120 L90,140 L-90,140 L-100,120 L-100,20 Z"
+          fill="none" stroke="#C89B3C" stroke-width="6" stroke-linejoin="round" transform="scale(0.9)"/>
+  </g>
+  <text x="400" y="420" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#F3E8D6">Signature Fade</text>
+  <text x="400" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" letter-spacing="2" fill="#C89B3C">BEFORE &amp; AFTER</text>
+  <text x="400" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" letter-spacing="3" fill="#7A6650">KING'S CUT SALOON</text>
+</svg>
