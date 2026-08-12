@@ -6,7 +6,10 @@ use App\Core\Auth;
 use App\Core\Mailer;
 use App\Core\View;
 use App\Models\Customer;
+<<<<<<< HEAD
 use App\Models\EmailVerification;
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 use App\Models\PasswordReset;
 use App\Models\Wallet;
 
@@ -54,6 +57,7 @@ class AuthController
         $customerId = Customer::create($fullName, $email, $phone ?: null, password_hash($password, PASSWORD_DEFAULT));
         Wallet::getOrCreateForCustomer($customerId);
 
+<<<<<<< HEAD
         $firstName = explode(' ', $fullName)[0];
         Mailer::sendWelcome($email, $firstName);
 
@@ -140,6 +144,18 @@ class AuthController
         redirect('/verify-email');
     }
 
+=======
+        $customer = Customer::findById($customerId);
+        Auth::login($customer);
+
+        $firstName = explode(' ', $fullName)[0];
+        Mailer::sendWelcome($email, $firstName);
+
+        flash('success', 'Account created! Choose a membership plan whenever you\'re ready.');
+        redirect('/membership');
+    }
+
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     public function showLogin(): void
     {
         if (Auth::check()) {

@@ -4,11 +4,17 @@ namespace App\Controllers;
 
 use App\Core\Auth;
 use App\Core\View;
+<<<<<<< HEAD
 use App\Models\Coupon;
 use App\Models\Reservation;
 use App\Models\ServiceCatalog;
 use App\Models\SessionPricing;
 use App\Models\Subscription;
+=======
+use App\Models\Reservation;
+use App\Models\ServiceCatalog;
+use App\Models\SessionPricing;
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 class ReservationController
 {
@@ -24,6 +30,7 @@ class ReservationController
         ]);
     }
 
+<<<<<<< HEAD
     /** Live AJAX check as the customer types a Membership ID — never trusted again at submit time. */
     public function checkMembership(): void
     {
@@ -71,6 +78,8 @@ class ReservationController
         ]);
     }
 
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     public function submit(): void
     {
         csrf_verify();
@@ -84,8 +93,11 @@ class ReservationController
         $reservationDate = $_POST['reservation_date'] ?? '';
         $notes = trim($_POST['notes'] ?? '');
         $serviceIds = array_map('intval', $_POST['services'] ?? []);
+<<<<<<< HEAD
         $membershipIdInput = trim($_POST['membership_id'] ?? '');
         $couponCodeInput = trim($_POST['coupon_code'] ?? '');
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
         if ($fullName === '' || $email === '' || $phone === '') {
             flash('error', 'Please fill in your name, email, and phone number.');
@@ -130,6 +142,7 @@ class ReservationController
             redirect('/reserve');
         }
 
+<<<<<<< HEAD
         // ---- Pricing, calculated entirely server-side ----
         $sessionTotal = SessionPricing::estimate($pricing, $numberOfPeople);
         $servicesTotal = array_sum(array_map(fn($s) => (float) $s['standard_price'], $selectedServices));
@@ -161,6 +174,11 @@ class ReservationController
         }
 
         $estimatedTotal = $subtotalBeforeCoupon - $couponDiscount;
+=======
+        $sessionTotal = SessionPricing::estimate($pricing, $numberOfPeople);
+        $servicesTotal = array_sum(array_map(fn($s) => (float) $s['standard_price'], $selectedServices));
+        $estimatedTotal = $sessionTotal + $servicesTotal;
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
         $user = Auth::user();
 
@@ -174,19 +192,25 @@ class ReservationController
             'number_of_people' => $numberOfPeople,
             'reservation_date' => $reservationDate,
             'notes' => $notes ?: null,
+<<<<<<< HEAD
             'membership_id_input' => $validMembershipId,
             'membership_discount' => $membershipDiscount,
             'coupon_id' => $coupon['id'] ?? null,
             'coupon_code' => $coupon['code'] ?? null,
             'coupon_discount' => $couponDiscount,
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
             'estimated_total' => $estimatedTotal,
         ]);
         Reservation::attachServices($reservationId, $selectedServices);
 
+<<<<<<< HEAD
         if ($coupon) {
             Coupon::redeem((int) $coupon['id']);
         }
 
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         flash('success', 'Thanks, ' . explode(' ', $fullName)[0] . '! Your request is in — we\'ll call or email you shortly to confirm.');
         redirect('/reserve');
     }

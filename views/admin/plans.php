@@ -80,10 +80,13 @@ $durationLabels = [
 
         <button type="submit" class="btn btn-outline btn-block">Save Changes</button>
       </form>
+<<<<<<< HEAD
       <form method="post" action="<?= url('/admin/plans/' . $plan['id'] . '/delete') ?>" style="margin-top:10px;" onsubmit="return confirm('Delete the &quot;<?= e(addslashes($plan['name'])) ?>&quot; plan? This can\'t be undone, and only works if no customer has ever subscribed to it.');">
         <?php csrf_field(); ?>
         <button type="submit" class="btn btn-outline btn-block" style="border-color:var(--burgundy); color:var(--burgundy-bright);">Delete Plan</button>
       </form>
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     </div>
   <?php endforeach; ?>
 </div>

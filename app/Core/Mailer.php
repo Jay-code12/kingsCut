@@ -97,6 +97,7 @@ HTML;
 
     public static function sendOtp(string $toEmail, string $firstName, string $otpCode): bool
     {
+<<<<<<< HEAD
         $body = self::otpBody(e($firstName), $otpCode, 'reset your King&rsquo;s Cut Saloon password');
         return self::send($toEmail, 'Your King\'s Cut Saloon password reset code', self::shell('Your one-time code is ' . $otpCode, $body));
     }
@@ -107,6 +108,12 @@ HTML;
         return self::send($toEmail, 'Verify your email — King\'s Cut Saloon', self::shell('Your verification code is ' . $otpCode, $body));
     }
 
+=======
+        $body = self::otpBody(e($firstName), $otpCode);
+        return self::send($toEmail, 'Your King\'s Cut Saloon password reset code', self::shell('Your one-time code is ' . $otpCode, $body));
+    }
+
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     public static function sendWelcome(string $toEmail, string $firstName): bool
     {
         $body = self::welcomeBody(e($firstName));
@@ -125,6 +132,7 @@ HTML;
         return self::send($toEmail, 'We received your reservation request', self::shell('We\'ll be in touch to confirm your booking.', $body));
     }
 
+<<<<<<< HEAD
     /** A custom message from Super Admin to one or more selected customers, with a subject they typed themselves. */
     public static function sendBroadcast(string $toEmail, string $firstName, string $subject, string $message): bool
     {
@@ -133,6 +141,9 @@ HTML;
     }
 
     private static function otpBody(string $firstName, string $otpCode, string $purpose = 'reset your King&rsquo;s Cut Saloon password'): string
+=======
+    private static function otpBody(string $firstName, string $otpCode): string
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     {
         $ink = self::BRAND_INK;
         $brass = self::BRAND_BRASS;
@@ -140,7 +151,11 @@ HTML;
         return <<<HTML
         <p style="margin:0 0 16px; font-size:15px; color:{$ink}; line-height:1.6;">Hi {$firstName},</p>
         <p style="margin:0 0 24px; font-size:15px; color:{$ink}; line-height:1.6;">
+<<<<<<< HEAD
           Use this code to {$purpose}. It expires in 10 minutes.
+=======
+          Use this code to reset your King&rsquo;s Cut Saloon password. It expires in 10 minutes.
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         </p>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
           <tr>
@@ -150,7 +165,11 @@ HTML;
           </tr>
         </table>
         <p style="margin:24px 0 0; font-size:13px; color:#8A7A5C; line-height:1.6; font-family:Arial, sans-serif;">
+<<<<<<< HEAD
           Didn&rsquo;t request this? You can safely ignore this email.
+=======
+          Didn&rsquo;t request this? You can safely ignore this email — your password won&rsquo;t change unless this code is used.
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         </p>
         HTML;
     }
@@ -246,6 +265,7 @@ HTML;
         </p>
         HTML;
     }
+<<<<<<< HEAD
 
     private static function broadcastBody(string $firstName, string $message): string
     {
@@ -261,4 +281,6 @@ HTML;
         </p>
         HTML;
     }
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 }

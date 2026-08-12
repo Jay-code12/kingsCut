@@ -82,6 +82,7 @@ function adminNav(string $key, string $active): string
             Our Work
           </button>
         </a>
+<<<<<<< HEAD
         <a href="<?= url('/admin/sessions') ?>" style="text-decoration:none;">
           <button class="<?= adminNav('sessions', $activeNav) ?>">
             <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7V12L15 14" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -96,6 +97,10 @@ function adminNav(string $key, string $active): string
               Customers
             </button>
           </a>
+=======
+        <?php if ($isSuper): ?>
+          <div class="nav-group-label">Super Admin</div>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
           <a href="<?= url('/admin/plans') ?>" style="text-decoration:none;">
             <button class="<?= adminNav('plans', $activeNav) ?>">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 6H20M4 12H20M4 18H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -108,10 +113,17 @@ function adminNav(string $key, string $active): string
               Services &amp; Categories
             </button>
           </a>
+<<<<<<< HEAD
           <a href="<?= url('/admin/coupons') ?>" style="text-decoration:none;">
             <button class="<?= adminNav('coupons', $activeNav) ?>">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 9V7C4 5.9 4.9 5 6 5H18C19.1 5 20 5.9 20 7V9C18.9 9 18 9.9 18 11C18 12.1 18.9 13 20 13V15C20 16.1 19.1 17 18 17H6C4.9 17 4 16.1 4 15V13C5.1 13 6 12.1 6 11C6 9.9 5.1 9 4 9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
               Coupons
+=======
+          <a href="<?= url('/admin/sessions') ?>" style="text-decoration:none;">
+            <button class="<?= adminNav('sessions', $activeNav) ?>">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7V12L15 14" stroke="currentColor" stroke-width="1.6"/></svg>
+              Booking Sessions
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
             </button>
           </a>
         <?php endif; ?>

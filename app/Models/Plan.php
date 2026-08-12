@@ -143,6 +143,7 @@ class Plan
         $stmt->execute([$code]);
         return (int) $stmt->fetchColumn() > 0;
     }
+<<<<<<< HEAD
 
     /**
      * Delete a plan and its prices. Refuses if any customer subscription
@@ -164,4 +165,6 @@ class Plan
         $stmt->execute([$id]);
         return true;
     }
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 }

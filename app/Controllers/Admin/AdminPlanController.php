@@ -104,6 +104,7 @@ class AdminPlanController
         flash('success', $name . ' plan updated — changes are live on the Membership page now.');
         redirect('/admin/plans');
     }
+<<<<<<< HEAD
 
     public function delete(string $id): void
     {
@@ -124,4 +125,6 @@ class AdminPlanController
         }
         redirect('/admin/plans');
     }
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 }

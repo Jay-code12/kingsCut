@@ -65,6 +65,7 @@ use App\Models\SessionPricing;
       </div>
 
       <div class="reserve-section">
+<<<<<<< HEAD
         <h4>4. Got a discount? <span class="progress-tiny">(both optional)</span></h4>
         <div class="row-2">
           <div class="field">
@@ -82,6 +83,9 @@ use App\Models\SessionPricing;
 
       <div class="reserve-section">
         <h4>5. Your contact info</h4>
+=======
+        <h4>4. Your contact info</h4>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         <div class="row-2">
           <div class="field"><label for="full_name">Full name</label><input type="text" id="full_name" name="full_name" placeholder="Alex Morgan" value="<?= e($user['full_name'] ?? '') ?>" required></div>
           <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="+234 800 000 0000" value="<?= e($user['phone'] ?? '') ?>" required></div>
@@ -93,8 +97,11 @@ use App\Models\SessionPricing;
       <div class="reserve-summary" id="reserveSummary">
         <div class="reserve-summary-row"><span>Session</span><span id="sumSession">—</span></div>
         <div class="reserve-summary-row"><span>Services</span><span id="sumServices">₦0</span></div>
+<<<<<<< HEAD
         <div class="reserve-summary-row" id="sumMembershipRow" style="display:none; color:var(--sage);"><span>Membership discount</span><span id="sumMembership">–₦0</span></div>
         <div class="reserve-summary-row" id="sumCouponRow" style="display:none; color:var(--sage);"><span>Coupon discount</span><span id="sumCoupon">–₦0</span></div>
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         <div class="reserve-summary-row total"><span>Estimated total</span><span id="sumTotal">₦0</span></div>
         <p class="progress-tiny">Final pricing is confirmed by the front desk — this is an estimate.</p>
       </div>
@@ -105,12 +112,16 @@ use App\Models\SessionPricing;
 </div>
 
 <script>
+<<<<<<< HEAD
   const basePath = document.body.getAttribute('data-base-path') || '';
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
   const peopleInput = document.getElementById('number_of_people');
   const sessionInputs = document.querySelectorAll('input[name="session_location"]');
   const serviceInputs = document.querySelectorAll('input[name="services[]"]');
   const sessionTypeInput = document.getElementById('sessionTypeInput');
   const locationTypeInput = document.getElementById('locationTypeInput');
+<<<<<<< HEAD
   const membershipInput = document.getElementById('membership_id');
   const couponInput = document.getElementById('coupon_code');
 
@@ -156,6 +167,8 @@ use App\Models\SessionPricing;
   couponInput.addEventListener('input', () => {
     couponTimer = debounceCheck(couponInput, couponTimer, 'couponStatus', '/reserve/check-coupon', 'code', (pct) => { couponDiscountPercent = pct; });
   });
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
   function recalc() {
     let base = 0, perPerson = 0, sessionLabel = '—';
@@ -173,6 +186,7 @@ use App\Models\SessionPricing;
     let servicesTotal = 0;
     serviceInputs.forEach(input => { if (input.checked) servicesTotal += parseFloat(input.dataset.price); });
 
+<<<<<<< HEAD
     const membershipDiscount = Math.round(servicesTotal * (membershipDiscountPercent / 100) * 100) / 100;
     const subtotalBeforeCoupon = sessionTotal + (servicesTotal - membershipDiscount);
     const couponDiscount = Math.round(subtotalBeforeCoupon * (couponDiscountPercent / 100) * 100) / 100;
@@ -198,6 +212,11 @@ use App\Models\SessionPricing;
     }
 
     document.getElementById('sumTotal').textContent = '₦' + total.toLocaleString();
+=======
+    document.getElementById('sumSession').textContent = sessionLabel + ' (' + people + ' ppl)';
+    document.getElementById('sumServices').textContent = '₦' + servicesTotal.toLocaleString();
+    document.getElementById('sumTotal').textContent = '₦' + (sessionTotal + servicesTotal).toLocaleString();
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
   }
 
   sessionInputs.forEach(el => el.addEventListener('change', recalc));

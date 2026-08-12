@@ -19,18 +19,26 @@ class AdminReservationController
             $status = null;
         }
 
+<<<<<<< HEAD
         $date = $_GET['date'] ?? null;
         if ($date !== null && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
             $date = null;
         }
 
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         View::renderAdmin('reservations', [
             'title' => 'Reservations',
             'admin' => AdminAuth::user(),
             'activeNav' => 'reservations',
+<<<<<<< HEAD
             'reservations' => Reservation::allForAdmin($status, $date),
             'statusFilter' => $status,
             'dateFilter' => $date,
+=======
+            'reservations' => Reservation::allForAdmin($status),
+            'statusFilter' => $status,
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
             'pendingCount' => Reservation::countPending(),
         ]);
     }

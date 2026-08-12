@@ -36,6 +36,7 @@ class Customer
         $stmt = Database::getInstance()->prepare('UPDATE customers SET password_hash = ? WHERE id = ?');
         $stmt->execute([$newPasswordHash, $customerId]);
     }
+<<<<<<< HEAD
 
     public static function markEmailUnverified(int $customerId): void
     {
@@ -103,4 +104,6 @@ class Customer
         $stmt->execute($ids);
         return $stmt->fetchAll();
     }
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 }

@@ -12,6 +12,13 @@ $rangeLabels = [
     'month' => 'Last 12 Months',
     'year'  => 'Last 5 Years',
 ];
+<<<<<<< HEAD
+=======
+$maxMix = 0;
+foreach ($revenueByPlan as $row) {
+    $maxMix = max($maxMix, (float) $row['total']);
+}
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 ?>
 <div class="dash-head">
   <div><h3>Sales Overview</h3><p>Revenue across the saloon — filter by hour, day, week, month, or year.</p></div>
@@ -25,6 +32,7 @@ $rangeLabels = [
   <div class="dcard"><span class="lbl">Active Members</span><div class="big"><?= (int) $summary['active_members'] ?></div><div class="sub"><?= (int) $summary['active_plans'] ?> active plans</div></div>
 </div>
 
+<<<<<<< HEAD
 <div class="admin-topbar">
   <div class="range-toggle" style="margin-bottom:0;">
     <?php foreach ($rangeLabels as $key => $label): ?>
@@ -35,6 +43,12 @@ $rangeLabels = [
     <button type="button" class="active" data-type="bar">Bar</button>
     <button type="button" data-type="line">Line</button>
   </div>
+=======
+<div class="range-toggle">
+  <?php foreach ($rangeLabels as $key => $label): ?>
+    <a href="<?= url('/admin?range=' . $key) ?>"><button class="<?= $range === $key ? 'active' : '' ?>"><?= e($label) ?></button></a>
+  <?php endforeach; ?>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 </div>
 
 <div class="chart-box">
@@ -50,13 +64,25 @@ $rangeLabels = [
   <?php if (empty($revenueByPlan)): ?>
     <p class="empty-note">No paid subscriptions yet.</p>
   <?php else: ?>
+<<<<<<< HEAD
     <div class="chart-canvas-wrap" style="height:280px; max-width:420px; margin:0 auto;">
       <canvas id="planPieChart"></canvas>
+=======
+    <div class="mix-list">
+      <?php foreach ($revenueByPlan as $row): ?>
+        <div class="mix-row">
+          <span class="mix-name"><?= e($row['plan_name']) ?></span>
+          <div class="mix-bar-track"><div class="mix-bar-fill" style="width:<?= $maxMix > 0 ? round(((float) $row['total'] / $maxMix) * 100) : 0 ?>%;"></div></div>
+          <span class="mix-amt"><?= money($row['total']) ?></span>
+        </div>
+      <?php endforeach; ?>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     </div>
   <?php endif; ?>
 </div>
 
 <script>
+<<<<<<< HEAD
   const revenueData = {
     labels: <?= json_encode($chart['labels']) ?>,
     values: <?= json_encode($chart['values']) ?>,
@@ -77,6 +103,19 @@ $rangeLabels = [
         maxBarThickness: 36,
         tension: 0.35,
         fill: true,
+=======
+  const ctx = document.getElementById('salesChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?= json_encode($chart['labels']) ?>,
+      datasets: [{
+        label: 'Revenue',
+        data: <?= json_encode($chart['values']) ?>,
+        backgroundColor: '#C89B3C',
+        borderRadius: 4,
+        maxBarThickness: 36,
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
       }],
     },
     options: {
@@ -97,6 +136,7 @@ $rangeLabels = [
       },
     },
   });
+<<<<<<< HEAD
 
   document.querySelectorAll('#chartTypeToggle button').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -137,4 +177,6 @@ $rangeLabels = [
     },
   });
   <?php endif; ?>
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 </script>

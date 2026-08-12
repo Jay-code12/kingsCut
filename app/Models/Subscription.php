@@ -58,6 +58,7 @@ class Subscription
     }
 
     /**
+<<<<<<< HEAD
      * Look up a subscription by its Membership ID (e.g. "KC-0417-SG") — used to
      * validate the optional membership discount on the Reserve page. Only an
      * active subscription is eligible for the discount.
@@ -74,6 +75,8 @@ class Subscription
     }
 
     /**
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
      * Create a new subscription (simulated instant online payment activates it immediately,
      * matching the PRD: "Online payments activate subscriptions automatically").
      */

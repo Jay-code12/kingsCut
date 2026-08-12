@@ -73,12 +73,16 @@ both plans, secondary IDs, and payment history.
 
 You can also register a brand-new account from `/register` and subscribe to
 any plan from `/membership` to see the full signup → subscribe → dashboard
+<<<<<<< HEAD
 flow (registration now requires verifying a 6-digit email code first — see
 "Registration email verification" below).
 
 **Demo coupon codes** (for trying `/reserve`): `WELCOME10` (10% off,
 active), `VIP20` (20% off, seeded already at its usage limit — shows as
 "Limit reached"), `LAUNCH25` (25% off, seeded inactive).
+=======
+flow.
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 ## What's implemented
 
@@ -179,6 +183,7 @@ roles, matching the PRD:
 
 **Admin** (`tunde@kingscutsaloon.com` / `password123`) — day-to-day operations:
 - **Sales Overview**
+<<<<<<< HEAD
 - **Reservations** — every booking request, newest first, with a date
   filter to jump to a specific session day; filter by status and mark
   each Pending / Confirmed / Cancelled with an optional note
@@ -215,12 +220,35 @@ Admin has, plus catalog, pricing, and customer-communication control:
   write. Every send is logged to `email_broadcasts` (who sent what, to
   how many). Each customer row also links to **Cards**, showing every
   membership they hold with a **View / Print Card** button per plan.
+=======
+- **Reservations** — see every booking request (session, location, headcount,
+  services picked, contact info, estimated total), filter by status, and
+  mark each one Pending / Confirmed / Cancelled with an optional note
+- **Our Work** — upload gallery photos or add YouTube links, delete items
+
+**Super Admin** (`samuel@kingscutsaloon.com` / `password123`) — everything
+Admin has, plus catalog and pricing control:
+- **Membership Plans** — edit each plan's name, tagline, discount %, max
+  secondary IDs, and per-duration price; optionally set a strike-through
+  "was" price per duration (only accepted if it's actually higher than
+  the real price — otherwise it's silently ignored rather than showing a
+  nonsense "discount"). Add brand-new plans too.
+- **Services & Categories** — add/edit/delete categories (a category with
+  services in it can't be deleted, to avoid orphaning services) and
+  services, including the same optional strike-through price.
+- **Booking Sessions** — set the base fee and per-person rate for each of
+  the 8 session combinations (Morning/Afternoon/Evening/Whole Day ×
+  VIP Office/VIP Outside), and toggle any combination off if it's not
+  bookable right now — deactivated combinations disappear from the
+  public Reserve page immediately.
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 - Every change here is **live immediately** on the public Services,
   Membership, and Reserve pages — same tables, same models.
 
 ### Sales Overview
 
 Revenue analytics grouped by **Hour** (today), **Day** (last 30), **Week**
+<<<<<<< HEAD
 (last 12), **Month** (last 12), or **Year** (last 5) — with a chart you can
 toggle between **Bar** and **Line**, plus a **Pie chart** breaking revenue
 down by plan, and KPI cards (today / this month / this year / all-time /
@@ -239,6 +267,13 @@ dialog — every modern browser (Chrome, Edge, Safari, Firefox) can "print"
 straight to a PDF file with no extra software, so there's no server-side
 PDF library to install or keep working. The print CSS hides the toolbar
 and renders just the card.
+=======
+(last 12), **Month** (last 12), or **Year** (last 5) — a Chart.js bar chart
+plus KPI cards (today / this month / this year / all-time / active
+members) and a revenue-by-plan breakdown. Backed by `SalesReport`, which
+sums the `payments` table (status = paid) and fills in zero-value gaps so
+the chart never has a broken axis.
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 ## Reservations (VIP session booking)
 
@@ -249,6 +284,7 @@ customers, who get their name/email/phone pre-filled):
   per-person rate) is pulled live from what Super Admin set
 - Number of people, and a date (today or later)
 - Select any number of services from the full catalog
+<<<<<<< HEAD
 - **Optional Membership ID** — if it matches an active subscription, the
   plan's member discount is applied to the services portion of the total,
   the same way it works when paying by wallet elsewhere in the app
@@ -266,6 +302,17 @@ The submission is saved as `pending` and shows up immediately in the
 Admin Console's **Reservations** page (newest first) for follow-up —
 nothing here auto-confirms or charges anything; it's a request the front
 desk actions manually, matching the "we'll contact you" flow described.
+=======
+- Contact info: full name, phone, email, optional notes
+- A running estimate updates client-side as selections change; the
+  authoritative total is recalculated server-side from the database
+  (never trusts the number shown in the browser)
+
+The submission is saved as `pending` and shows up immediately in the
+Admin Console's **Reservations** page for follow-up — nothing here
+auto-confirms or charges anything; it's a request the front desk
+actions manually, matching the "we'll contact you" flow described.
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 ## Our Work (image + YouTube gallery)
 
@@ -281,6 +328,7 @@ Super Admin/Admin can:
   query params) — the video ID is extracted and embedded responsively
 - **Delete** either type; deleting an image also removes the file from
   disk, not just the database row
+<<<<<<< HEAD
 - In the Admin Console, click any thumbnail to open it full-size (images)
   or play it (videos) in a lightbox, without leaving the page
 
@@ -295,6 +343,8 @@ option) — implemented as its own `EmailVerification` model and
 `email_verifications` table so it can't interfere with an in-progress
 password reset for the same account. `customers.email_verified_at` records
 when it happened; the Admin Console's Customers page can filter by it.
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 ## Password reset via OTP
 
@@ -336,6 +386,7 @@ index.php                  Front controller / routes
 app/Core/                  Database, Router, Auth, AdminAuth, View, Mailer
 app/Models/                Customer, Admin, Plan, Subscription, Wallet,
                             ServiceCatalog, SecondaryId, Attendance, Payment,
+<<<<<<< HEAD
                             Share, PasswordReset, EmailVerification,
                             SalesReport, SessionPricing, Reservation,
                             WorkItem, Coupon
@@ -353,6 +404,21 @@ views/dashboard/           Overview, wallet, attendance, family, payments
 views/admin/               Admin login, sales dashboard, plans, services,
                             sessions, reservations, work, coupons, customers,
                             customer-cards, membership-card (standalone print view)
+=======
+                            Share, PasswordReset, SalesReport, SessionPricing,
+                            Reservation, WorkItem
+app/Controllers/           Home, Service, Membership, Contact, Auth, Dashboard,
+                            Public (QR share pages), Reservation, Work
+app/Controllers/Admin/     AdminAuth, AdminDashboard, AdminPlan, AdminService,
+                            AdminSession, AdminReservation, AdminWork
+
+views/                     PHP templates (plain, no template engine)
+views/layout/              Shared header/footer for site, auth, dashboard, admin
+views/auth/                Login, register, forgot-password, reset-password
+views/dashboard/           Overview, wallet, attendance, family, payments
+views/admin/               Admin login, sales dashboard, plans, services,
+                            sessions, reservations, work
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 views/reserve.php          Public booking form
 views/work.php             Public work gallery
 views/emails/              (Mailer builds emails inline — see app/Core/Mailer.php)
@@ -366,8 +432,14 @@ sql/kings_cut_saloon.sql   Full schema + seed data (see below)
 
 `sql/kings_cut_saloon.sql` creates the entire schema in one import,
 including `admins`, `authorization_codes`, and `audit_log` for future admin
+<<<<<<< HEAD
 features (like the attendance check-in scanner shown in the earlier
 UI/UX mockups, which isn't wired up yet). The seed data
+=======
+features (like the attendance check-in scanner and per-member billing shown
+in the earlier UI/UX mockups, which aren't wired up yet — this build covers
+Sales Overview, Plans, and Services management specifically). The seed data
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 spreads sample payments across the last ~30 months using relative
 `DATE_SUB(NOW(), ...)` expressions specifically so the Sales Overview chart
 has realistic data in every view (Hour/Day/Week/Month/Year) regardless of

@@ -19,8 +19,11 @@ use App\Controllers\Admin\AdminServiceController;
 use App\Controllers\Admin\AdminSessionController;
 use App\Controllers\Admin\AdminReservationController;
 use App\Controllers\Admin\AdminWorkController;
+<<<<<<< HEAD
 use App\Controllers\Admin\AdminCouponController;
 use App\Controllers\Admin\AdminCustomerController;
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 $router = new Router();
 
@@ -33,16 +36,22 @@ $router->get('/contact', [ContactController::class, 'index']);
 $router->post('/contact', [ContactController::class, 'submit']);
 $router->get('/reserve', [ReservationController::class, 'showForm']);
 $router->post('/reserve', [ReservationController::class, 'submit']);
+<<<<<<< HEAD
 $router->get('/reserve/check-membership', [ReservationController::class, 'checkMembership']);
 $router->get('/reserve/check-coupon', [ReservationController::class, 'checkCoupon']);
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 $router->get('/work', [WorkController::class, 'index']);
 
 // ---- Auth ----
 $router->get('/register', [AuthController::class, 'showRegister']);
 $router->post('/register', [AuthController::class, 'register']);
+<<<<<<< HEAD
 $router->get('/verify-email', [AuthController::class, 'showVerifyEmail']);
 $router->post('/verify-email', [AuthController::class, 'verifyEmail']);
 $router->post('/verify-email/resend', [AuthController::class, 'resendVerificationOtp']);
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 $router->get('/login', [AuthController::class, 'showLogin']);
 $router->post('/login', [AuthController::class, 'login']);
 $router->get('/logout', [AuthController::class, 'logout']);
@@ -77,7 +86,10 @@ $router->get('/admin', [AdminDashboardController::class, 'overview']);
 $router->get('/admin/plans', [AdminPlanController::class, 'index']);
 $router->post('/admin/plans/create', [AdminPlanController::class, 'create']);
 $router->post('/admin/plans/{id}/update', [AdminPlanController::class, 'update']);
+<<<<<<< HEAD
 $router->post('/admin/plans/{id}/delete', [AdminPlanController::class, 'delete']);
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 $router->get('/admin/services', [AdminServiceController::class, 'index']);
 $router->post('/admin/services/create', [AdminServiceController::class, 'createService']);
@@ -90,6 +102,7 @@ $router->post('/admin/services/categories/{id}/delete', [AdminServiceController:
 $router->get('/admin/sessions', [AdminSessionController::class, 'index']);
 $router->post('/admin/sessions/update', [AdminSessionController::class, 'update']);
 
+<<<<<<< HEAD
 $router->get('/admin/coupons', [AdminCouponController::class, 'index']);
 $router->post('/admin/coupons/create', [AdminCouponController::class, 'create']);
 $router->post('/admin/coupons/{id}/toggle', [AdminCouponController::class, 'toggle']);
@@ -100,6 +113,8 @@ $router->post('/admin/customers/send-email', [AdminCustomerController::class, 's
 $router->get('/admin/customers/{customerId}/cards', [AdminCustomerController::class, 'cards']);
 $router->get('/admin/customers/{customerId}/card/{subscriptionId}', [AdminCustomerController::class, 'showCard']);
 
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 $router->get('/admin/reservations', [AdminReservationController::class, 'index']);
 $router->post('/admin/reservations/{id}/status', [AdminReservationController::class, 'updateStatus']);
 

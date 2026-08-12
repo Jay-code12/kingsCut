@@ -19,7 +19,11 @@ function navClass(string $path, string $current): string
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= url('assets/css/style.css') ?>">
 </head>
+<<<<<<< HEAD
 <body data-base-path="<?= e(rtrim(BASE_PATH, '/')) ?>">
+=======
+<body>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
 <header class="site">
   <div class="nav-row">

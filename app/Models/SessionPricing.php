@@ -68,6 +68,7 @@ class SessionPricing
         $stmt->execute([$basePrice, $pricePerPerson, $isActive ? 1 : 0, $sessionType, $locationType]);
     }
 
+<<<<<<< HEAD
     /** Availability-only toggle — never touches pricing. Safe for the plain Admin role to call. */
     public static function toggleActive(string $sessionType, string $locationType, bool $isActive): void
     {
@@ -77,6 +78,8 @@ class SessionPricing
         $stmt->execute([$isActive ? 1 : 0, $sessionType, $locationType]);
     }
 
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
     /** Estimate a total for a booking: base fee + (people × per-person fee). */
     public static function estimate(array $pricing, int $numberOfPeople): float
     {

@@ -11,10 +11,15 @@ class Reservation
         $db = Database::getInstance();
         $stmt = $db->prepare(
             'INSERT INTO reservations
+<<<<<<< HEAD
                 (customer_id, full_name, email, phone, session_type, location_type, number_of_people,
                  reservation_date, notes, membership_id_input, membership_discount,
                  coupon_id, coupon_code, coupon_discount, estimated_total, status)
              VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"pending")'
+=======
+                (customer_id, full_name, email, phone, session_type, location_type, number_of_people, reservation_date, notes, estimated_total, status)
+             VALUES (?,?,?,?,?,?,?,?,?,?,"pending")'
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         );
         $stmt->execute([
             $data['customer_id'],
@@ -26,11 +31,14 @@ class Reservation
             $data['number_of_people'],
             $data['reservation_date'],
             $data['notes'],
+<<<<<<< HEAD
             $data['membership_id_input'] ?? null,
             $data['membership_discount'] ?? 0,
             $data['coupon_id'] ?? null,
             $data['coupon_code'] ?? null,
             $data['coupon_discount'] ?? 0,
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
             $data['estimated_total'],
         ]);
         return (int) $db->lastInsertId();
@@ -70,6 +78,7 @@ class Reservation
         return $stmt->fetchAll();
     }
 
+<<<<<<< HEAD
     /**
      * All reservations for the admin list — newest submissions first.
      * Optionally filtered by status and/or a specific reservation date.
@@ -93,6 +102,18 @@ class Reservation
         $stmt = $db->prepare("SELECT * FROM reservations $whereSql ORDER BY created_at DESC");
         $stmt->execute($params);
 
+=======
+    /** All reservations for the admin list, optionally filtered by status. */
+    public static function allForAdmin(?string $status = null): array
+    {
+        $db = Database::getInstance();
+        if ($status !== null) {
+            $stmt = $db->prepare('SELECT * FROM reservations WHERE status = ? ORDER BY reservation_date ASC, created_at DESC');
+            $stmt->execute([$status]);
+        } else {
+            $stmt = $db->query('SELECT * FROM reservations ORDER BY (status = "pending") DESC, reservation_date ASC, created_at DESC');
+        }
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         $reservations = $stmt->fetchAll();
         foreach ($reservations as &$r) {
             $r['services'] = self::servicesFor((int) $r['id']);

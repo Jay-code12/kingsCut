@@ -10,20 +10,28 @@ class AdminSessionController
 {
     public function index(): void
     {
+<<<<<<< HEAD
         // Both roles can view/manage availability; only Super Admin edits pricing.
         AdminAuth::requireLogin();
+=======
+        AdminAuth::requireSuperAdmin();
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 
         View::renderAdmin('sessions', [
             'title' => 'Booking Sessions',
             'admin' => AdminAuth::user(),
             'activeNav' => 'sessions',
             'pricing' => array_values(SessionPricing::allKeyed()),
+<<<<<<< HEAD
             'isSuper' => AdminAuth::isSuperAdmin(),
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         ]);
     }
 
     public function update(): void
     {
+<<<<<<< HEAD
         AdminAuth::requireLogin();
         csrf_verify();
 
@@ -53,6 +61,26 @@ class AdminSessionController
         flash('success', $isSuper
             ? 'Session pricing updated — changes are live on the Reserve page now.'
             : 'Session availability updated.');
+=======
+        AdminAuth::requireSuperAdmin();
+        csrf_verify();
+
+        foreach (SessionPricing::SESSION_TYPES as $sessionType) {
+            foreach (SessionPricing::LOCATION_TYPES as $locationType) {
+                $key = $sessionType . '_' . $locationType;
+                if (!isset($_POST['base'][$key])) {
+                    continue;
+                }
+                $basePrice = (float) $_POST['base'][$key];
+                $perPerson = (float) ($_POST['per_person'][$key] ?? 0);
+                $isActive = !empty($_POST['active'][$key]);
+
+                SessionPricing::update($sessionType, $locationType, $basePrice, $perPerson, $isActive);
+            }
+        }
+
+        flash('success', 'Session pricing updated — changes are live on the Reserve page now.');
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         redirect('/admin/sessions');
     }
 }

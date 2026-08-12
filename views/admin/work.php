@@ -36,6 +36,7 @@
   <div class="work-admin-grid">
     <?php foreach ($items as $item): ?>
       <div class="work-admin-item">
+<<<<<<< HEAD
         <?php if ($item['type'] === 'image'):
           $fullUrl = e(url('assets/' . $item['image_path']));
         ?>
@@ -44,6 +45,12 @@
         <?php else: ?>
           <div class="thumb-video" style="cursor:pointer;"
                onclick="openWorkLightbox('video', <?= json_encode($item['youtube_video_id']) ?>, <?= json_encode($item['title'] ?: '') ?>)">▶</div>
+=======
+        <?php if ($item['type'] === 'image'): ?>
+          <img class="thumb" src="<?= e(url('assets/' . $item['image_path'])) ?>" alt="">
+        <?php else: ?>
+          <div class="thumb-video">▶</div>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         <?php endif; ?>
         <div class="meta">
           <b><?= e($item['title'] ?: ucfirst($item['type'])) ?></b>
@@ -57,6 +64,7 @@
     <?php endforeach; ?>
   </div>
 <?php endif; ?>
+<<<<<<< HEAD
 
 <!-- ============ Work item lightbox ============ -->
 <div class="share-modal-overlay" id="workLightboxOverlay">
@@ -94,3 +102,5 @@
     }
   });
 </script>
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1

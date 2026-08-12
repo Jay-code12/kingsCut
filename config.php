@@ -7,7 +7,11 @@
 
 // ---- Database configuration ----
 define('DB_HOST', 'localhost');
+<<<<<<< HEAD
 define('DB_NAME', 'saloon_v2');
+=======
+define('DB_NAME', 'kings_cut_saloon');
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 define('DB_USER', 'root');
 define('DB_PASS', '');
 

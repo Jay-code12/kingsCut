@@ -2,11 +2,15 @@
 /**
  * @var array $reservations
  * @var string|null $statusFilter
+<<<<<<< HEAD
  * @var string|null $dateFilter
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
  * @var int $pendingCount
  */
 use App\Models\SessionPricing;
 $statusOptions = ['pending' => 'Pending', 'confirmed' => 'Confirmed', 'cancelled' => 'Cancelled'];
+<<<<<<< HEAD
 
 function reservationUrl(?string $status, ?string $date): string
 {
@@ -18,10 +22,16 @@ function reservationUrl(?string $status, ?string $date): string
 ?>
 <div class="dash-head">
   <div><h3>Reservations</h3><p>Booking requests from the Reserve page, newest first — confirm or decline, and leave a note for the customer.</p></div>
+=======
+?>
+<div class="dash-head">
+  <div><h3>Reservations</h3><p>Booking requests from the Reserve page — confirm or decline, and leave a note for the customer.</p></div>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
   <?php if ($pendingCount > 0): ?><span class="status-chip status-temp"><?= $pendingCount ?> pending</span><?php endif; ?>
 </div>
 
 <div class="filter-bar">
+<<<<<<< HEAD
   <a href="<?= e(reservationUrl(null, $dateFilter)) ?>" style="text-decoration:none;"><button class="btn <?= $statusFilter === null ? 'btn-primary' : 'btn-outline' ?> btn-sm">All</button></a>
   <?php foreach ($statusOptions as $key => $label): ?>
     <a href="<?= e(reservationUrl($key, $dateFilter)) ?>" style="text-decoration:none;"><button class="btn <?= $statusFilter === $key ? 'btn-primary' : 'btn-outline' ?> btn-sm"><?= e($label) ?></button></a>
@@ -39,11 +49,25 @@ function reservationUrl(?string $status, ?string $date): string
 
 <?php if (empty($reservations)): ?>
   <p class="empty-note">No reservations match <?= $statusFilter || $dateFilter ? 'that filter' : '' ?> yet.</p>
+=======
+  <a href="<?= url('/admin/reservations') ?>" style="text-decoration:none;"><button class="btn <?= $statusFilter === null ? 'btn-primary' : 'btn-outline' ?> btn-sm">All</button></a>
+  <?php foreach ($statusOptions as $key => $label): ?>
+    <a href="<?= url('/admin/reservations?status=' . $key) ?>" style="text-decoration:none;"><button class="btn <?= $statusFilter === $key ? 'btn-primary' : 'btn-outline' ?> btn-sm"><?= e($label) ?></button></a>
+  <?php endforeach; ?>
+</div>
+
+<?php if (empty($reservations)): ?>
+  <p class="empty-note">No reservations <?= $statusFilter ? 'with that status' : '' ?> yet.</p>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
 <?php else: ?>
   <?php foreach ($reservations as $r): ?>
     <div class="reservation-row">
       <div class="reservation-row-head">
+<<<<<<< HEAD
         <h5><?= e($r['full_name']) ?> <span class="progress-tiny">· session on <?= e(date('D, d M Y', strtotime($r['reservation_date']))) ?></span></h5>
+=======
+        <h5><?= e($r['full_name']) ?> <span class="progress-tiny">· <?= e(date('D, d M Y', strtotime($r['reservation_date']))) ?></span></h5>
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
         <span class="status-chip status-<?= $r['status'] === 'confirmed' ? 'active' : ($r['status'] === 'cancelled' ? 'expired' : 'temp') ?>"><?= e(ucfirst($r['status'])) ?></span>
       </div>
 
@@ -55,12 +79,15 @@ function reservationUrl(?string $status, ?string $date): string
         <div><span>Phone</span><?= e($r['phone']) ?></div>
         <div><span>Email</span><?= e($r['email']) ?></div>
         <?php if ($r['customer_id']): ?><div><span>Account</span>Logged-in member</div><?php endif; ?>
+<<<<<<< HEAD
         <?php if (!empty($r['membership_id_input'])): ?>
           <div><span>Membership Discount</span><?= e($r['membership_id_input']) ?> — <?= money($r['membership_discount']) ?> off</div>
         <?php endif; ?>
         <?php if (!empty($r['coupon_code'])): ?>
           <div><span>Coupon</span><?= e($r['coupon_code']) ?> — <?= money($r['coupon_discount']) ?> off</div>
         <?php endif; ?>
+=======
+>>>>>>> b801f809980fdca60e306a71b1e67d9e42d83bf1
       </div>
 
       <?php if (!empty($r['services'])): ?>
